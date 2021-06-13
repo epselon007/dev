@@ -73,6 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                     children: <Widget>[
                       Container(
                         height: 400,
+                        width: MediaQuery.of(context).size.width * 1,
                         decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage('assets/IIT BHU.jpg'),
@@ -162,7 +163,7 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                   SizedBox(height: 120.0),
-                  GestureDetector(
+                  /* GestureDetector(
                     onTap: () async {
                       await LoginPage.guestLoginSetup();
 
@@ -189,9 +190,32 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ),
-                  ),
+                  ),*/
+                  /* FloatingActionButton(
+                    onPressed: () {},
+                    backgroundColor: Colors.black,
+                  )*/
                 ],
               ),
+        floatingActionButton: Container(
+          height: MediaQuery.of(context).size.width * 0.25,
+          width: MediaQuery.of(context).size.width * 0.25,
+          child: FloatingActionButton.extended(
+            onPressed: () async {
+              await LoginPage.guestLoginSetup();
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/home', ModalRoute.withName('/root'));
+            },
+            label: Text(
+              'Guest',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            backgroundColor: Colors.black,
+          ),
+        ),
       ),
     );
   }
